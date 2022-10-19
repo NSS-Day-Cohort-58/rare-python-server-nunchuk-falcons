@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 from views.user import create_user, login_user
-from views import get_all_posts
+from views import get_all_posts, get_single_post
 
 
 class HandleRequests(BaseHTTPRequestHandler):
