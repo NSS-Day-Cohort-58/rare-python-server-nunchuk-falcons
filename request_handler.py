@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 from views.user import create_user, login_user
-from views import get_all_tags
+from views import get_all_posts, get_all_tags
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -52,15 +52,27 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     def do_GET(self):
         """Handle Get requests to the server"""
-        response = {}
-        (resource, id) = self.parse_url()
 
-        if resource == "tags":
+        response = {}
+
+        parsed = self.parse_url()
+
+        if '?' in response:
+            (resource, key, value) = parsed
+        else:
+            (resource, id) = parsed
+        
+        if resource == "posts":
+            if id is not None:
+                pass
+                # response = get_single_post(id)
+            else:
+                response = get_all_posts()
+        elif resource == "tags":
             self._set_headers(200)
             response = get_all_tags()
-        
-        self.wfile.write(json.dumps(response).encode())
 
+        self.wfile.write(json.dumps(response).encode())
 
     def do_POST(self):
         """Make a post request to the server"""
