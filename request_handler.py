@@ -67,6 +67,7 @@ class HandleRequests(BaseHTTPRequestHandler):
                 pass
                 # response = get_single_post(id)
             else:
+                self._set_headers(200)
                 response = get_all_posts()
         elif resource == "tags":
             self._set_headers(200)
