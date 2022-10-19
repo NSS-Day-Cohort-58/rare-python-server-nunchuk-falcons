@@ -59,7 +59,7 @@ class HandleRequests(BaseHTTPRequestHandler):
             self._set_headers(200)
             response = get_all_tags()
         
-        self.wfile.write(response.encode())
+        self.wfile.write(json.dumps(response).encode())
 
 
     def do_POST(self):
