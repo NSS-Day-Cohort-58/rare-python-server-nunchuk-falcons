@@ -12,12 +12,15 @@ def get_all_posts():
         db_cursor.execute("""
         SELECT
             p.id,
+            p.user_id,
+            p.category_id,
             p.title,
-            p.author_name,
-            p.category,
-            p.date
+            p.publication_date,
+            p.image_url,
+            p.content,
+            p.approved
         FROM posts p
-        ORDER BY p.date
+        ORDER BY p.publication_date
         """)
 
         posts = []
@@ -25,8 +28,9 @@ def get_all_posts():
         dataset = db_cursor.fetchall()
 
         for row in dataset:
-            post = Post(row['id'], row['title'], row['author_name'], 
-                            row['category'], row['date'])
+            post = Post(row['id'], row['user_id'], row['category_id'], 
+                            row['title'], row['publication_date'], row['image_url'],
+                            row['content'], row['approved'])
 
             posts.append(post.__dict__)
     
