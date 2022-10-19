@@ -17,6 +17,7 @@ def get_all_posts():
             p.category,
             p.date
         FROM posts p
+        ORDER BY p.date
         """)
 
         posts = []
