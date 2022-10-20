@@ -92,6 +92,11 @@ INSERT INTO Categories ('label') VALUES ('Love');
 INSERT INTO Categories ('label') VALUES ('Travel');
 INSERT INTO Categories ('label') VALUES ('Jobs');
 INSERT INTO Tags ('label') VALUES ('JavaScript');
+INSERT INTO Tags ('label') VALUES ('Money');
+INSERT INTO Tags ('label') VALUES ('Relationship');
+INSERT INTO Tags ('label') VALUES ('Foodie');
+INSERT INTO Tags ('label') VALUES ('Football');
 INSERT INTO Tags ('label') VALUES ('Python');
+
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');
 
