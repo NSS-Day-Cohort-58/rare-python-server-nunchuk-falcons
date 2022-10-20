@@ -85,8 +85,15 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         if resource == 'login':
             response = login_user(post_body)
-        if resource == 'register':
+        elif resource == 'register':
             response = create_user(post_body)
+        elif resource == 'tags':
+            if 'label' in post_body:
+                self._set_headers(201)
+                response = ""
+            else:
+                self._set_headers(400)
+                response = {"message": f'{"Label is required" if "label" not in post_body else""}'}
 
         self.wfile.write(response.encode())
 

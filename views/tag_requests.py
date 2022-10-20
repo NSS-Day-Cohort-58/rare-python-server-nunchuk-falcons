@@ -27,3 +27,7 @@ def get_all_tags():
             tags.append(tag.__dict__)
     
     return tags
+
+def create_tag(tag):
+
+    with sqlite3.connect("./kennel.sqlite3") as conn:
