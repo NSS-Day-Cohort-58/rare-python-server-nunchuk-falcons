@@ -31,7 +31,7 @@ CREATE TABLE "Subscriptions" (
 );
 
 CREATE TABLE "Posts" (
-  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "user_id" INTEGER,
   "category_id" INTEGER,
   "title" varchar,
