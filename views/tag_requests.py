@@ -29,6 +29,7 @@ def get_all_tags():
     return tags
 
 def create_tag(tag):
+    """Adds a new tag to the database"""
 
     with sqlite3.connect("./db.sqlite3") as conn:
         db_cursor = conn.cursor()
@@ -37,10 +38,10 @@ def create_tag(tag):
         INSERT INTO Tags
             (label)
         VALUES
-            (?);
-        """, (tag['label']))
+            (?)
+        """, (tag['label'],))
 
         id = db_cursor.lastrowid
         tag['id'] = id
     
-    return tag
+    return json.dumps(tag)
