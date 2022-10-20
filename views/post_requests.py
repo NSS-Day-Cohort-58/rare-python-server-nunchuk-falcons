@@ -54,7 +54,6 @@ def get_single_post(id):
             p.content,
             p.approved
         FROM posts p
-        ORDER BY p.date
         WHERE p.id = ?
         """, ( id, ))
 
@@ -69,4 +68,4 @@ def get_single_post(id):
                     data['content'],         
                     data['approved'])
     
-    return post.__init__
+    return post.__dict__
