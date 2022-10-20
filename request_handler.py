@@ -97,7 +97,7 @@ class HandleRequests(BaseHTTPRequestHandler):
             else:
                 self._set_headers(400)
                 response = {"message": f'{"Label is required" if "label" not in post_body else""}'}
-        if resource == 'postForm':
+        if resource == 'posts':
             response = create_post(post_body)
 
         self.wfile.write(response.encode())
