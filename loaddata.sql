@@ -117,4 +117,5 @@ INSERT INTO Tags ('label') VALUES ('Foodie');
 INSERT INTO Tags ('label') VALUES ('Football');
 
 
+INSERT INTO Tags ('label') VALUES ('Python');
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');

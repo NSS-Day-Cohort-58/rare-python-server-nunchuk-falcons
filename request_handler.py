@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 from views.user import create_user, login_user
-from views import get_all_posts, get_single_post
+from views import get_all_posts, get_all_tags, get_single_post
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -52,7 +52,6 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     def do_GET(self):
         """Handle Get requests to the server"""
-        self._set_headers(200)
 
         response = {}
 
@@ -65,9 +64,14 @@ class HandleRequests(BaseHTTPRequestHandler):
         
         if resource == "posts":
             if id is not None:
-                response = get_single_post(id)
+                pass
+                # response = get_single_post(id)
             else:
+                self._set_headers(200)
                 response = get_all_posts()
+        elif resource == "tags":
+            self._set_headers(200)
+            response = get_all_tags()
 
         self.wfile.write(json.dumps(response).encode())
 
