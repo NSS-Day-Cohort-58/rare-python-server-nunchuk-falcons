@@ -54,7 +54,6 @@ def get_single_post(id):
             p.content,
             p.approved
         FROM posts p
-        ORDER BY p.date
         WHERE p.id = ?
         """, ( id, ))
 

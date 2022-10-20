@@ -64,8 +64,8 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         if resource == "posts":
             if id is not None:
-                pass
-                # response = get_single_post(id)
+                self._set_headers(200)
+                response = get_single_post(id)
             else:
                 self._set_headers(200)
                 response = get_all_posts()
