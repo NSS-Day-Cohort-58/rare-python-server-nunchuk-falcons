@@ -1,7 +1,6 @@
-import json
 import sqlite3
+import json
 from models import Category
-
 
 def get_all_categories():
     """Returns all categories"""
@@ -11,7 +10,7 @@ def get_all_categories():
         conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
 
-        db_cursor.execute = ("""
+        db_cursor.execute("""
         SELECT
             c.id,
             c.label
@@ -35,7 +34,7 @@ def create_category(new_category):
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
-        INSERT INTO new_s
+        INSERT INTO Categories
             ( id, label )
         VALUES
             ( ?, ? )
