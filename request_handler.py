@@ -1,8 +1,9 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+from views.tag_requests import create_tag
 
 from views.user import create_user, login_user
-from views import get_all_posts, get_all_tags
+from views import get_all_posts, get_all_tags, get_single_post
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -90,7 +91,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         elif resource == 'tags':
             if 'label' in post_body:
                 self._set_headers(201)
-                response = ""
+                response = create_tag(post_body)
             else:
                 self._set_headers(400)
                 response = {"message": f'{"Label is required" if "label" not in post_body else""}'}
