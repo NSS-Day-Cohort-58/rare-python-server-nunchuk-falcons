@@ -41,9 +41,6 @@ CREATE TABLE "Posts" (
   "approved" bit,
   FOREIGN KEY(`user_id`) REFERENCES `Users`(`id`)
 );
-INSERT INTO `Posts` VALUES (null, 1, 1, "To live and die by balenciaga dreams", "20221002, https://cdn.runrepeat.com/i/balenciaga/28009/balenciaga-speed-trainer-9d11-600.jpg", "Nada", True);
-
-INSERT INTO Posts ('label') VALUES ('JavaScript');
 
 CREATE TABLE "Comments" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -88,16 +85,6 @@ CREATE TABLE "Categories" (
   "label" varchar
 );
 
-CREATE TABLE "Post" (
-  "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  "user_id" INTEGER,
-  "title" varchar,
-  "author_name" varchar,
-  "category" INTEGER,
-  "date" CURRENT_TIME,
-  FOREIGN KEY(`user_id`) REFERENCES `Users`(`id`)
-);
-
 INSERT INTO `Post` VALUES (null, 1, "To live and die by balenciaga dreams", "JRock", 1, True);
 
 INSERT INTO Categories ('label') VALUES ('News');
@@ -108,14 +95,11 @@ INSERT INTO Categories ('label') VALUES ('Food');
 INSERT INTO Categories ('label') VALUES ('Sports');
 
 
-
-
 INSERT INTO Tags ('label') VALUES ('JavaScript');
 INSERT INTO Tags ('label') VALUES ('Money');
 INSERT INTO Tags ('label') VALUES ('Relationship');
 INSERT INTO Tags ('label') VALUES ('Foodie');
 INSERT INTO Tags ('label') VALUES ('Football');
-
-
 INSERT INTO Tags ('label') VALUES ('Python');
+
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');
