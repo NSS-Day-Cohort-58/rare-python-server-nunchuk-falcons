@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from views.category_requests import get_all_categories
 from views.user import create_user, login_user
-from views import get_all_posts, get_all_tags, get_single_post, create_tag
+from views import get_all_posts, get_all_tags, get_single_post, create_post, create_tag
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -97,6 +97,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             else:
                 self._set_headers(400)
                 response = {"message": f'{"Label is required" if "label" not in post_body else""}'}
+        if resource == 'postForm':
+            response = create_post(post_body)
 
         self.wfile.write(response.encode())
 
