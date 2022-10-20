@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from views.category_requests import get_all_categories
 from views.user import create_user, login_user
-from views import get_all_posts, get_all_tags, get_single_post
+from views import get_all_posts, get_all_tags, get_single_post, create_post
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -90,6 +90,8 @@ class HandleRequests(BaseHTTPRequestHandler):
             response = login_user(post_body)
         if resource == 'register':
             response = create_user(post_body)
+        if resource == 'postForm':
+            response = create_post(post_body)
 
         self.wfile.write(response.encode())
 
