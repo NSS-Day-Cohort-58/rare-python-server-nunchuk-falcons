@@ -85,8 +85,6 @@ CREATE TABLE "Categories" (
   "label" varchar
 );
 
-INSERT INTO `Post` VALUES (null, 1, "To live and die by balenciaga dreams", "JRock", 1, True);
-
 INSERT INTO Categories ('label') VALUES ('News');
 INSERT INTO Categories ('label') VALUES ('Love');
 INSERT INTO Categories ('label') VALUES ('Economics');
