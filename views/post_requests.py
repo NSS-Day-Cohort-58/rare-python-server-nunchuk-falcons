@@ -88,4 +88,4 @@ def create_post(new_post):
 
         new_post['id'] = id
     
-    return new_post
+    return json.dumps(new_post)
