@@ -100,3 +100,4 @@ INSERT INTO Tags ('label') VALUES ('Python');
 
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');
 
+SELECT * FROM categories;

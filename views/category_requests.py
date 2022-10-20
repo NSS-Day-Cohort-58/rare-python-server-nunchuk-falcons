@@ -4,7 +4,8 @@ from models import Category
 
 
 def get_all_categories():
-
+    """Returns all categories"""
+    
     with sqlite3.connect("./db.sqlite3") as conn:
 
         conn.row_factory = sqlite3.Row
@@ -35,7 +36,7 @@ def create_category(new_category):
 
         db_cursor.execute("""
         INSERT INTO new_s
-            ( id, label)
+            ( id, label )
         VALUES
             ( ?, ? )
         """, (new_category['id'], new_category['label']))
