@@ -16,7 +16,12 @@ def get_all_users():
             u.first_name,
             u.last_name,
             u.username,
-            u.email
+            u.email,
+            u.bio,
+            u.password,
+            u.profile_image_url,
+            u.created_on,
+            u.active
         FROM Users u
         ORDER BY username
         """)
@@ -25,7 +30,8 @@ def get_all_users():
         dataset = db_cursor.fetchall()
 
         for row in dataset:
-            user = User(row['id'], row['first_name'], row['last_name'], row['username'],row['email'])
+            user = User(row['id'], row['first_name'], row['last_name'], row['username'],row['email'],
+            row['bio'], row['password'],row['profile_image_url'],row['created_on'],row['active'])
 
             users.append(user.__dict__)
     
