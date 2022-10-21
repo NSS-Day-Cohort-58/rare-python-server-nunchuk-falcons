@@ -42,9 +42,6 @@ CREATE TABLE "Posts" (
   FOREIGN KEY(`user_id`) REFERENCES `Users`(`id`)
 );
 
-INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_url', 'content', 'approved') 
-VALUES ( 2, 3, 'Life in Peaces', 2022-10-02, 'www.getbehind.com', 'Text', True);
-
 CREATE TABLE "Comments" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "post_id" INTEGER,
@@ -106,5 +103,14 @@ INSERT INTO Tags ('label') VALUES ('Foodie');
 INSERT INTO Tags ('label') VALUES ('Football');
 INSERT INTO Tags ('label') VALUES ('Python');
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');
+
+INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_url', 'content', 'approved') 
+VALUES ( 2, 3, 'Life in Peaces', 2022-10-02, 'www.getbehind.com', 'Text', True);
+INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_url', 'content', 'approved') 
+VALUES ( 2, 3, 'The Inner Game of Tennis', 1974, 'www.innergame.com', 'book', True);
+INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_url', 'content', 'approved') 
+VALUES ( 2, 3, 'The Alchemist', 1988, 'www.alchemy.com', 'book', True);
+INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_url', 'content', 'approved') 
+VALUES ( 2, 3, 'Great Big World', 1901, 'www.bigole.com', 'book', True);
 
 SELECT * FROM categories;
