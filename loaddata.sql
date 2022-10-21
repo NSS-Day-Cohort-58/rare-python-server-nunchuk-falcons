@@ -88,6 +88,11 @@ CREATE TABLE "Categories" (
   "label" varchar
 );
 
+INSERT INTO posts ('user_id', 'category_id', 'title', 'publication_date',
+    'image_url', 'content', 'approved') VALUES (1, 2, 'Test Title', '2022-10-15',
+    '', 'Test content', 1) 
+
+
 INSERT INTO Categories ('label') VALUES ('News');
 INSERT INTO Categories ('label') VALUES ('Sports');
 INSERT INTO Categories ('label') VALUES ('Family');
