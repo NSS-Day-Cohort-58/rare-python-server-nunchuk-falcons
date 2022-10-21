@@ -90,10 +90,42 @@ def create_post(new_post):
     return json.dumps(new_post)
 
 def delete_post(id):
-    with sqlite3.connect("./kennel.sqlite3") as conn:
+    with sqlite3.connect("./db.sqlite3") as conn:
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
         DELETE FROM posts
         WHERE id = ?
         """, (id, ))
+
+def update_post(id, edited_post):
+    """Updates a post"""
+
+    with sqlite3.connect("./db.sqlite3") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        UPDATE Posts
+            SET
+                user_id = ?,
+                category_id = ?,
+                title = ?,
+                publication_date = ?,
+                image_url = ?,
+                content = ?,
+                approved = ?
+        WHERE id = ?
+        """, (edited_post['user_id'], 
+                edited_post['category_id'], 
+                edited_post['title'], 
+                edited_post['publication_date'],
+                edited_post['image_url'], 
+                edited_post['content'], 
+                edited_post['approved'], id, ))
+
+        rows_affected = db_cursor.rowcount
+
+        if rows_affected == 0:
+            return False
+        else:
+            return True
