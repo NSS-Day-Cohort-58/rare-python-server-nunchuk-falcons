@@ -42,6 +42,9 @@ CREATE TABLE "Posts" (
   FOREIGN KEY(`user_id`) REFERENCES `Users`(`id`)
 );
 
+INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_url', 'content', 'approved') 
+VALUES ( 2, 3, 'Life in Peaces', 2022-10-02, 'www.getbehind.com', 'Text', True);
+
 CREATE TABLE "Comments" (
   "id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "post_id" INTEGER,
