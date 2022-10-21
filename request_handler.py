@@ -3,7 +3,7 @@ import json
 from views.category_requests import create_category, get_all_categories
 from views.post_requests import update_post
 from views.user import create_user, login_user
-from views import get_all_posts, get_all_tags, get_single_post, create_post, create_tag
+from views import get_all_posts, get_all_tags, get_single_post, create_post, create_tag, delete_post
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -53,11 +53,8 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     def do_GET(self):
         """Handle Get requests to the server"""
-
         response = {}
-
         parsed = self.parse_url()
-
         if '?' in response:
             (resource, key, value) = parsed
         else:
@@ -130,7 +127,12 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     def do_DELETE(self):
         """Handle DELETE Requests"""
-        pass
+        self._set_headers(204)
+        (resource, id) = self.parse_url()
+        response = None
+        if resource == "posts":
+            delete_post(id)
+            self.wfile.write(json.dumps(response).encode())
 
 
 def main():
