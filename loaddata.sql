@@ -109,3 +109,4 @@ INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_
 VALUES ( 2, 3, 'Great Big World', 1901, 'www.bigole.com', 'book', True);
 
 SELECT * FROM categories;
+SELECT * FROM users;
