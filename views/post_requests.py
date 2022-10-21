@@ -68,7 +68,7 @@ def get_single_post(id):
                     data['content'],         
                     data['approved'])
     
-    return post.__init__
+    return post.__dict__
 
 def create_post(new_post):
     with sqlite3.connect("./db.sqlite3") as conn:
