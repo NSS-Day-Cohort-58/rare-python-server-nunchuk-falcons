@@ -28,20 +28,21 @@ def get_all_categories():
 
     return categories
 
-def create_category(new_category):
-    # Get the id value of the last employee in the list
+def create_category(category):
+    """Adds a new category to the database"""
+
     with sqlite3.connect("./db.sqlite3") as conn:
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
         INSERT INTO Categories
-            ( id, label )
+            (label)
         VALUES
-            ( ?, ? )
-        """, (new_category['id'], new_category['label']))
+            (?)
+        """, (category['label'],))
 
         id = db_cursor.lastrowid
 
-        new_category['id'] = id
+        category['id'] = id
 
-    return new_category
+    return json.dumps(category)

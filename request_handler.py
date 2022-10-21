@@ -95,13 +95,16 @@ class HandleRequests(BaseHTTPRequestHandler):
             if 'label' in post_body:
                 self._set_headers(201)
                 response = create_tag(post_body)
+        elif resource == 'categories':
+            if 'label' in post_body:
+                self._set_headers(201)
+                response = create_category(post_body)
             else:
                 self._set_headers(400)
                 response = {"message": f'{"Label is required" if "label" not in post_body else""}'}
         if resource == 'posts':
             response = create_post(post_body)
-        if resource == 'categories':
-            response = create_category(post_body)
+
         self.wfile.write(response.encode())
 
     def do_PUT(self):
