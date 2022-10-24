@@ -118,3 +118,4 @@ VALUES ( 2, 3, 'Great Big World', 1901, 'www.bigole.com', 'book', True);
 
 INSERT INTO Users ('id', 'first_name', 'last_name', 'email', 'bio', 'username', 'password', 'profile_image_url', 'created_on', 'active')
 VALUES (5, 'Bilbo', 'Baggins', 'hairyfeet@gmail.com', 'Just a simple Hobbit who loves cake', 'bbaggins', '12345', null, '101026', 'active')
+

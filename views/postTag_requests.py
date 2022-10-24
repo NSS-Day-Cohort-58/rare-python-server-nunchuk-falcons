@@ -1,10 +1,6 @@
 import sqlite3
-
-
-import sqlite3
 import json
-
-from models.postTags import PostTags
+from models import PostTags
 
 def get_all_post_tags():
     with sqlite3.connect("./db.sqlite3") as conn:
