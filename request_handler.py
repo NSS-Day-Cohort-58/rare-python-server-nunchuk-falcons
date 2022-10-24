@@ -76,6 +76,7 @@ class HandleRequests(BaseHTTPRequestHandler):
             response = get_all_tags()
         elif resource == "categories":
             self._set_headers(200)
+            response = get_all_categories()
         elif resource == "postTags":
             self._set_headers(200)
             response = get_all_post_tags()
