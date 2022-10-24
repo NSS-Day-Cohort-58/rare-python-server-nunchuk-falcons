@@ -4,7 +4,7 @@ from views.category_requests import create_category, get_all_categories
 from views.post_requests import update_post
 from views.user import create_user, login_user
 from views import get_all_posts, get_all_tags, get_single_post, create_post, create_tag, delete_post
-from views.user_request import get_all_users
+from views.user_request import get_all_users, get_single_user
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -75,8 +75,12 @@ class HandleRequests(BaseHTTPRequestHandler):
             self._set_headers(200)
             response = get_all_categories()
         elif resource == "users":
-            self._set_headers(200)
-            response = get_all_users()
+            if id is not None:
+                self._set_headers(200)
+                response = get_single_user(id)
+            else:
+                self._set_headers(200)
+                response = get_all_users()
         self.wfile.write(json.dumps(response).encode())
 
     def do_POST(self):
