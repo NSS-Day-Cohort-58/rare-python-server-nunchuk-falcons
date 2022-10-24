@@ -1,9 +1,7 @@
 from dataclasses import dataclass
 import sqlite3
 import json
-from models import Post
-from models.category import Category
-from models.user import User
+from models import Post, Category, User
 
 def get_all_posts():
     with sqlite3.connect("./db.sqlite3") as conn:
