@@ -1,9 +1,12 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from views.category_requests import create_category, get_all_categories
+from views.postTag_requests import get_all_post_tags
 from views.post_requests import update_post
 from views.user import create_user, login_user
-from views import get_all_posts, get_all_tags, get_single_post, create_post, create_tag, delete_post
+from views import (get_all_posts, get_all_tags, get_single_post, create_post, create_tag, delete_post,
+    get_all_post_tags,
+)
 from views.user_request import get_all_users, get_single_user
 
 
@@ -73,7 +76,9 @@ class HandleRequests(BaseHTTPRequestHandler):
             response = get_all_tags()
         elif resource == "categories":
             self._set_headers(200)
-            response = get_all_categories()
+        elif resource == "postTags":
+            self._set_headers(200)
+            response = get_all_post_tags()
         elif resource == "users":
             if id is not None:
                 self._set_headers(200)
