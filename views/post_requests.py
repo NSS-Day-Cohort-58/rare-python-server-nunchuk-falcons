@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import sqlite3
 import json
-from models import Post
+from models import Post, Category, User
 
 def get_all_posts():
     with sqlite3.connect("./db.sqlite3") as conn:
@@ -18,9 +18,25 @@ def get_all_posts():
             p.publication_date,
             p.image_url,
             p.content,
-            p.approved
+            p.approved,
+            u.id user_id,
+            u.first_name user_first_name,
+            u.last_name user_last_name,
+            u.email user_email,
+            u.bio user_bio,
+            u.username user_username,
+            u.password user_password,
+            u.profile_image_url user_image,
+            u.created_on user_created_date,
+            u.active user_active,
+            c.id category_id,
+            c.label category_label
         FROM posts p
-        ORDER BY p.publication_date
+        JOIN Users u
+            ON u.id = p.user_id
+        JOIN Categories c
+            ON c.id = p.category_id
+        ORDER BY p.publication_date DESC
         """)
 
         posts = []
@@ -31,7 +47,13 @@ def get_all_posts():
             post = Post(row['id'], row['user_id'], row['category_id'], 
                             row['title'], row['publication_date'], row['image_url'],
                             row['content'], row['approved'])
+            
+            user = User(row['user_id'], row['user_first_name'], row['user_last_name'], row['user_username'], row['user_email'], row['user_bio'], row['user_password'], row['user_image'], row['user_created_date'], row['user_active'])
 
+            category = Category(row['category_id'], row['category_label'])
+
+            post.user = user.__dict__
+            post.category = category.__dict__
             posts.append(post.__dict__)
     
     return posts
