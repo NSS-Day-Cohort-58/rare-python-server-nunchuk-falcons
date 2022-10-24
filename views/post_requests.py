@@ -74,8 +74,24 @@ def get_single_post(id):
             p.publication_date,
             p.image_url,
             p.content,
-            p.approved
+            p.approved,
+            u.id user_id,
+            u.first_name user_first_name,
+            u.last_name user_last_name,
+            u.email user_email,
+            u.bio user_bio,
+            u.username user_username,
+            u.password user_password,
+            u.profile_image_url user_image,
+            u.created_on user_created_date,
+            u.active user_active,
+            c.id category_id,
+            c.label category_label
         FROM posts p
+        JOIN Users u
+            ON u.id = p.user_id
+        JOIN Categories c
+            ON c.id = p.category_id
         WHERE p.id = ?
         """, ( id, ))
 
@@ -89,6 +105,22 @@ def get_single_post(id):
                     data['image_url'],         
                     data['content'],         
                     data['approved'])
+        
+        user = User(data['user_id'], 
+                    data['user_first_name'], 
+                    data['user_last_name'], 
+                    data['user_username'], 
+                    data['user_email'], 
+                    data['user_bio'], 
+                    data['user_password'], 
+                    data['user_image'], 
+                    data['user_created_date'], 
+                    data['user_active'])
+
+        category = Category(data['category_id'], data['category_label'])
+
+        post.user = user.__dict__
+        post.category = category.__dict__
     
     return post.__dict__
 
