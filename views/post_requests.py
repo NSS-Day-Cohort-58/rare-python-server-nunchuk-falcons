@@ -29,7 +29,7 @@ def get_all_posts():
             u.username user_username,
             u.password user_password,
             u.profile_image_url user_image,
-            u.created_on user_created,
+            u.created_on user_created_date,
             u.active user_active,
             c.id category_id,
             c.label category_label
@@ -50,7 +50,7 @@ def get_all_posts():
                             row['title'], row['publication_date'], row['image_url'],
                             row['content'], row['approved'])
             
-            user = User(row['user_id'], row['user_first_name'], row['user_last_name'], row['user_email'], row['user_bio'], row['user_username'], row['user_password'], row['user_image'], row['user_created'], row['user_active'])
+            user = User(row['user_id'], row['user_first_name'], row['user_last_name'], row['user_username'], row['user_email'], row['user_bio'], row['user_password'], row['user_image'], row['user_created_date'], row['user_active'])
 
             category = Category(row['category_id'], row['category_label'])
 
