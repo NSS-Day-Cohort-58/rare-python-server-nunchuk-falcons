@@ -89,6 +89,8 @@ INSERT INTO posts ('user_id', 'category_id', 'title', 'publication_date',
     'image_url', 'content', 'approved') VALUES (1, 2, 'Test Title', '2022-10-15',
     '', 'Test content', 1) 
 
+INSERT INTO PostTags ('post_id', 'tag_id') VALUES (1, 2)
+
 INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_url', 'content', 'approved')
 VALUES ( 2, 3, 'Life in Peaces', '2022-10-02', 'www.getbehind.com', 'Text', True);
 INSERT INTO Categories ('label') VALUES ('News');
@@ -116,3 +118,4 @@ VALUES ( 2, 3, 'Great Big World', 1901, 'www.bigole.com', 'book', True);
 
 INSERT INTO Users ('id', 'first_name', 'last_name', 'email', 'bio', 'username', 'password', 'profile_image_url', 'created_on', 'active')
 VALUES (5, 'Bilbo', 'Baggins', 'hairyfeet@gmail.com', 'Just a simple Hobbit who loves cake', 'bbaggins', '12345', null, '101026', 'active')
+
