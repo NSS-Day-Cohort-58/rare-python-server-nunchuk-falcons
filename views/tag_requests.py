@@ -29,7 +29,7 @@ def get_all_tags():
     
     return tags
 
-def get_single_tag():
+def get_single_tag(id):
     with sqlite3.connect("./db.sqlite3") as conn:
 
         conn.row_factory = sqlite3.Row
@@ -40,18 +40,15 @@ def get_single_tag():
             t.id,
             t.label
         FROM Tags t
-        ORDER BY label
-        """)
-
-        tags = []
+        WHERE t.id = ?
+        """, ( id, ))
 
         data = db_cursor.fetchone()
 
         tag = Tag(data['id'], 
                   data['label'])
 
-    
-    return tags.__dict__
+    return tag.__dict__
 
 
 def create_tag(tag):
