@@ -29,6 +29,31 @@ def get_all_tags():
     
     return tags
 
+def get_single_tag():
+    with sqlite3.connect("./db.sqlite3") as conn:
+
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        SELECT
+            t.id,
+            t.label
+        FROM Tags t
+        ORDER BY label
+        """)
+
+        tags = []
+
+        data = db_cursor.fetchone()
+
+        tag = Tag(data['id'], 
+                  data['label'])
+
+    
+    return tags.__dict__
+
+
 def create_tag(tag):
     """Adds a new tag to the database"""
 
