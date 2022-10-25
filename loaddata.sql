@@ -108,13 +108,13 @@ INSERT INTO Tags ('label') VALUES ('Python');
 INSERT INTO Reactions ('label', 'image_url') VALUES ('happy', 'https://pngtree.com/so/happy');
 
 INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_url', 'content', 'approved') 
-VALUES ( 2, 3, 'Life in Peaces', 2022-10-02, 'www.getbehind.com', 'Text', True);
+VALUES ( 2, 3, 'Life in Peaces', '2022-10-02', 'www.getbehind.com', 'Text', 1);
 INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_url', 'content', 'approved') 
-VALUES ( 2, 3, 'The Inner Game of Tennis', 1974, 'www.innergame.com', 'book', True);
+VALUES ( 2, 3, 'The Inner Game of Tennis', '2022-10-04', 'www.innergame.com', 'book', 1);
 INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_url', 'content', 'approved') 
-VALUES ( 2, 3, 'The Alchemist', 1988, 'www.alchemy.com', 'book', True);
+VALUES ( 2, 3, 'The Alchemist', '2022-09-02', 'www.alchemy.com', 'book', 1);
 INSERT INTO Posts ('user_id', 'category_id', 'title','publication_date', 'image_url', 'content', 'approved') 
-VALUES ( 2, 3, 'Great Big World', 1901, 'www.bigole.com', 'book', True);
+VALUES ( 2, 3, 'Great Big World', '2022-10-22', 'www.bigole.com', 'book', 1);
 
 INSERT INTO Users ('id', 'first_name', 'last_name', 'email', 'bio', 'username', 'password', 'profile_image_url', 'created_on', 'active')
 VALUES (5, 'Bilbo', 'Baggins', 'hairyfeet@gmail.com', 'Just a simple Hobbit who loves cake', 'bbaggins', '12345', null, '101026', 'active')

@@ -5,7 +5,7 @@ from views.postTag_requests import create_post_tag, get_all_post_tags
 from views.post_requests import update_post
 from views.user import create_user, login_user
 from views import (get_all_posts, get_all_tags, get_single_post, create_post, create_tag, delete_post,
-    get_all_post_tags, create_post_tag
+    get_all_post_tags, create_post_tag, update_tag
 )
 from views.user_request import get_all_users, get_single_user
 
@@ -138,6 +138,14 @@ class HandleRequests(BaseHTTPRequestHandler):
         else:
             self._set_headers(404)
 
+        self.wfile.write("".encode())
+
+        if resource == "tags":
+            success = update_post(id, post_body)
+        if success:
+            self._set_headers(204)
+        else:
+            self._set_headers(404)
         self.wfile.write("".encode())
 
     def do_DELETE(self):

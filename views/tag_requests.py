@@ -1,3 +1,4 @@
+from ctypes.wintypes import tagSIZE
 import sqlite3
 import json
 from models import Tag
@@ -45,3 +46,20 @@ def create_tag(tag):
         tag['id'] = id
     
     return json.dumps(tag)
+
+def update_tag(id, edited_tag):
+    with sqlite3.connect("./db.sqlite3") as conn:
+        db_cursor = conn.cursor()
+        db_cursor.execute("""
+        UPDATE Tags
+            SET
+                label = ?
+            WHERE id = ?
+            """, (edited_tag['label'], id))
+
+
+        rows_affected = db_cursor.rowcount
+        if rows_affected == 0:
+            return False
+        else:
+            return True
